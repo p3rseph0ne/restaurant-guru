@@ -1,4 +1,4 @@
-package backend.interfaces;
+package backend;
 
 import java.util.Date;
 import java.util.List;
@@ -7,6 +7,7 @@ public class Restaurant {
 
     private String name;
     private String address;
+    //range 1-3 cheap - expensive
     private int priceRange;
     //is list the best option? 2D array?
     private List<String[]> openingHours;
@@ -73,5 +74,12 @@ public class Restaurant {
     public boolean isOpen(Date today){
         //implement comparison today and openinghourse
         return true;
+    }
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

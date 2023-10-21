@@ -1,7 +1,5 @@
 package backend;
 
-import backend.interfaces.Person;
-
 import java.util.List;
 
 public class Customer extends Person {

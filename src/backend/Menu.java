@@ -1,4 +1,4 @@
-package backend.interfaces;
+package backend;
 
 import java.util.List;
 

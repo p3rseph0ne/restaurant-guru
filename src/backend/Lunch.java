@@ -1,8 +1,5 @@
 package backend;
 
-import backend.interfaces.Dish;
-import backend.interfaces.Restaurant;
-
 import java.util.Date;
 import java.util.List;
 
