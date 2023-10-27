@@ -1,4 +1,4 @@
-package backend;
+package backend.ressources;
 
 import java.util.List;
 

@@ -1,4 +1,9 @@
-package backend;
+package backend.businesslogic;
+
+import backend.ressources.Customer;
+import backend.ressources.Dish;
+import backend.ressources.Employee;
+import backend.ressources.Restaurant;
 
 import java.util.List;
 
@@ -20,15 +25,15 @@ public class Lunch {
         this.weather = weather;
 
         readRestaurants();
-        readAllergiesAndPreferences(emps,customs);
-        defineAvailableRestaurants(today);
+        readAllergiesAndPreferences();
+        defineAvailableRestaurants();
     }
 
     public List<Restaurant> getAvailableRestaurants() {
         return availableRestaurants;
     }
 
-    private void readAllergiesAndPreferences(List<Employee> emps, List<Customer> customs){
+    private void readAllergiesAndPreferences(){
         for (Customer c:customs) {
             for(String s:c.getAllergies()){
                 if(!allergies.contains(s)) allergies.add(s);
@@ -48,25 +53,25 @@ public class Lunch {
     }
 
     private void readRestaurants(){
-        //call dom implementation that reads a file with restaurant data
+        RestaurantReader rr = new RestaurantReader();
+        rr.update();
+        allRestaurants = rr.getRestaurants();
     }
-    public List<Restaurant> defineAvailableRestaurants(String today){
+    public void defineAvailableRestaurants(){
         //
-        for(int i = 0;i < allRestaurants.size(); i++){
-            Restaurant currRest = allRestaurants.get(i);
+        for (Restaurant currRest : allRestaurants) {
             //check opening days
-            if(currRest.isOpen(today)){
+            if (currRest.isOpen(today)) {
                 //check allergies
-                for(int j = 0; j < currRest.getMenu().getDishes().size(); j++){
+                for (int j = 0; j < currRest.getMenu().getDishes().size(); j++) {
                     Dish currDish = currRest.getMenu().getDishes().get(j);
-                    if(!currDish.getAllergens().containsAll(this.allergies)){
+                    if (!currDish.getAllergens().containsAll(this.allergies)) {
                         availableRestaurants.add(currRest);
                     }
                 }
 
             }
         }
-        return availableRestaurants;
     }
 
     public Restaurant randomRestaurant(){
