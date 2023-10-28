@@ -18,7 +18,7 @@ public class Lunch {
     private List<Restaurant> allRestaurants;
     private List<Restaurant> availableRestaurants;
 
-    public Lunch(List<Employee> emps, List<Customer> customs, String today, String weather) {
+    public Lunch(List<Employee> emps, List<Customer> customs, String today, String weather) throws IncorrectFileNameException {
         this.emps = emps;
         this.customs = customs;
         this.today = today;
@@ -52,7 +52,7 @@ public class Lunch {
         }
     }
 
-    private void readRestaurants(){
+    private void readRestaurants() throws IncorrectFileNameException {
         RestaurantReader rr = new RestaurantReader();
         rr.update();
         allRestaurants = rr.getRestaurants();

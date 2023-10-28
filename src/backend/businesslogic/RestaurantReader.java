@@ -10,15 +10,16 @@ import java.util.Scanner;
 public class RestaurantReader {
 
     //https://www.javatpoint.com/how-to-read-csv-file-in-java
-
     private List<Restaurant> restaurants;
+    private final String fileName = "/hier/liegt/dann/ein/File";
 
-    //evtl pfad zur datei als parameter angeben lassen?
-    public RestaurantReader(String fileName) throws IncorrectFileNameException {
-        update(fileName);
+
+    public RestaurantReader() throws IncorrectFileNameException {
+        update();
+
     }
 
-    public void update(String fileName) throws IncorrectFileNameException {
+    public void update() throws IncorrectFileNameException {
         //implement reading a doc with restaurant data
 
         try (Scanner file = new Scanner(new File(fileName))) {
