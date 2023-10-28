@@ -34,21 +34,26 @@ public class Lunch {
     }
 
     private void readAllergiesAndPreferences(){
-        for (Customer c:customs) {
-            for(String s:c.getAllergies()){
-                if(!allergies.contains(s)) allergies.add(s);
+        try {
+            for (Customer c : customs) {
+                for (String s : c.getAllergies()) {
+                    if (!allergies.contains(s)) allergies.add(s);
+                }
+                for (String s : c.getPreferences()) {
+                    if (!preferences.contains(s)) preferences.add(s);
+                }
             }
-            for(String s:c.getPreferences()){
-                if(!preferences.contains(s)) preferences.add(s);
+            for (Employee e : emps) {
+                for (String s : e.getAllergies()) {
+                    if (!allergies.contains(s)) allergies.add(s);
+                }
+                for (String s : e.getPreferences()) {
+                    if (!preferences.contains(s)) preferences.add(s);
+                }
             }
         }
-        for (Employee e:emps) {
-            for(String s:e.getAllergies()){
-                if(!allergies.contains(s)) allergies.add(s);
-            }
-            for(String s:e.getPreferences()){
-                if(!preferences.contains(s)) preferences.add(s);
-            }
+        catch (Exception erorrHandlingException){
+            erorrHandlingException.printStackTrace();
         }
     }
 
