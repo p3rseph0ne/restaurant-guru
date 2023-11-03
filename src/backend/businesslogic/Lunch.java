@@ -5,7 +5,7 @@ import backend.ressources.Dish;
 import backend.ressources.Employee;
 import backend.ressources.Restaurant;
 import backend.businesslogic.RestaurantReader;
-
+import java.util.Random;
 import java.util.List;
 
 public class Lunch {
@@ -19,7 +19,7 @@ public class Lunch {
     private List<Restaurant> allRestaurants;
     private List<Restaurant> availableRestaurants;
 
-    public Lunch(List<Employee> emps, List<Customer> customs, String today, String weather) {
+    public Lunch(List<Employee> emps, List<Customer> customs, String today, String weather) throws IncorrectFileNameException {
         this.emps = emps;
         this.customs = customs;
         this.today = today;
@@ -62,9 +62,9 @@ public class Lunch {
         }
     }
 
-    private void readRestaurants(){
-        RestaurantReader rr = new RestaurantReader();
-        rr.update();
+    private void readRestaurants() throws IncorrectFileNameException {
+        RestaurantReader rr = new RestaurantReader("RestaurantListe.docx");
+        rr.update("RestaurantListe");
         allRestaurants = rr.getRestaurants();
     }
     public void defineAvailableRestaurants(){
@@ -85,10 +85,16 @@ public class Lunch {
     }
 
     public Restaurant randomRestaurant(){
-        int random = 0;
+
+        int randomlySelectedRestaurantNumber = 0;
+        Random random1 = new Random();
+        Restaurant randomlySelectedRestaurant;
+
+        randomlySelectedRestaurantNumber = random1.nextInt(availableRestaurants.size());
+
         //implement random number generator with max value == amount of available restaurants
         //that returns a Restaurant from the list availableRestaurants at that point in the list
-
-        return availableRestaurants.get(random);
+         randomlySelectedRestaurant = availableRestaurants.get(randomlySelectedRestaurantNumber);
+        return randomlySelectedRestaurant;
     }
 }
