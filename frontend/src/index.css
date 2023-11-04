@@ -34,3 +34,8 @@ body {
   flex-direction: column;
   width: 400px;
 }
+
+.checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
