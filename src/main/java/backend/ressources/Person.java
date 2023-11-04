@@ -3,13 +3,15 @@ package backend.ressources;
 import java.util.List;
 
 public class Person {
+    private String id;
     private String name;
     private List<String> allergies;
     private List<String> preferences;
     private boolean isVegan;
     private boolean isVeggy;
 
-    public Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
+    public Person(String id, String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
+        this.id = id;
         this.name = name;
         this.allergies = allergies;
         this.preferences = preferences;
@@ -17,6 +19,13 @@ public class Person {
         this.isVeggy = isVeggy;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
