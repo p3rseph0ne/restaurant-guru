@@ -8,6 +8,12 @@ public class SparkRest {
         get("/hello/:name", (req, res) -> {
             return "Hello: " + req.params(":name");
         });
+
+        //implement get /adduser
+        //implement get /findrestaurant
+        //implement post /finderestaurant/result
+        //implement post /addperson
+        //implement post /deleteperson
     }
 
 }
