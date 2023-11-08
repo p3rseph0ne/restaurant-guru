@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import '../components/types.ts';
-import { Checkbox } from '../components/Checkbox';
 
 const allergies: Allergies = {
     A: false,
@@ -25,37 +24,103 @@ const allergies: Allergies = {
     italian: false,
   }
 
+  const weekdays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+  const timeframes = ["11:00","12:00","13:00"]
 
 
 
 function Restaurant() {
-  const[personList, setPersonList] = useState<Person[]>([])
-
-  useEffect(()=>{
-      getPersonList()
+  const[availablePersonList, setAvailablePersonList] = useState<Person[]>([])
+  const[checkedPersonList, setCheckedePersonList] = useState<Person[]>([])
+  const[day, setDay] = useState<String>("")
+  const[time, setTime] = useState<String>("")
+  const[restaurant,setRestaurant] = useState<Restaurant>({
+    name: "",
+    address: ""
   })
 
-  const handleCheckbox = () => {
-      
+
+
+  useEffect(()=>{
+      getAvailablePersonList()
+  }, [])
+
+
+  const handleCheckbox = (person: Person) => {
+      setCheckedePersonList((prev) => [...prev, person])
   };
 
-  async function getPersonList(){
+
+  const handleDayChange = (newDay: string) => {
+    setDay(newDay)
+  }
+
+  const handleTimeChange = (newTime: string) => {
+
+    setTime(newTime)
+  }
+
+  async function getAvailablePersonList() {  
       try {
           const response = await fetch("http://localhost:4567/restaurant");
           const personList = await response.json() as Person[]
 
-          setPersonList(personList)
-        } catch (e) {
+          setAvailablePersonList(personList)
+      } catch (e) {
           console.error(e)
-        }     
+      }
+           
   }
+
+  async function getRestaurant(){
+    try {
+        const response = await fetch("http://localhost:4567/restaurant/whatsforlunchmum", {
+          method: 'POST',
+          body: JSON.stringify({
+            checkedPerson: checkedPersonList,
+            day: day,
+            time: time
+          })
+        })
+
+        const restaurantJson = (await response.json()) as Restaurant
+        console.log(restaurantJson)
+
+        setRestaurant(restaurantJson)
+        
+      } catch (e) {
+        console.error(e)
+      }     
+    
+  }
+
+  console.log(restaurant)
 
   return (
     <div className="formContainer">
       <label>
-        <input type="checkbox"  onChange={(e) => handleCheckbox()} name ='test'/>
-        {personList?.map(person => <div key={person.name}>{person.name}</div>)}
+        <div className="checkboxGrid">
+        {availablePersonList?.map(person => <div key={person.name}><input type="checkbox" onChange={() => handleCheckbox(person)} name ={person.name}/>{person.name}</div>)}
+        </div>
       </label>
+      <label>
+        <div className="checkboxGrid">
+          {weekdays?.map(day => <div key={day}><input type="radio" onChange={() => handleDayChange(day)} name="day" value={day}/>{day}</div>)}
+        </div>
+      </label>
+      <label> 
+        <div className="checkboxGrid">
+          {timeframes?.map(hour => <div key={hour}><input type="radio" onChange={() => handleTimeChange(hour)} name ="time" value={hour}/>{hour}</div>)}
+        </div>
+      </label>
+      <label>
+        <div>
+          <button onClick={() => getRestaurant()}>Whats for lunch mum????</button>
+        </div>
+      </label>
+      <div>
+          {restaurant.name};{restaurant.address}
+      </div>
     </div>
     
   )

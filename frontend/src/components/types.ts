@@ -29,3 +29,8 @@ interface Allergies{
     isCustomer: boolean;
     isPaying: boolean;
   }
+
+  interface Restaurant {
+    name: string;
+    address: string;
+  }
