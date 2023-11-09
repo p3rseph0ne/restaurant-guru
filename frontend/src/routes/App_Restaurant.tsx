@@ -5,7 +5,10 @@ import { Checkbox } from "../components/Checkbox";
 import "../components/types.ts";
 import {
   Button,
+  FormControl,
   FormControlLabel,
+  FormGroup,
+  FormLabel,
   Paper,
   Radio,
   RadioGroup,
@@ -67,7 +70,10 @@ function Restaurant() {
     person: Person
   ) => {
     if (!e.target.checked) {
-      //heraus finden wie man hier was aus einer wannabe-"liste" entfernt
+      const updatedCheckPersonList = checkedPersonList.filter((checkedPersonList) => {
+        return checkedPersonList.name !== e.target.value;
+      });
+      setCheckedePersonList(updatedCheckPersonList)
     } else if (e.target.checked) {
       setCheckedePersonList((prev) => [...prev, person]);
     }
@@ -126,24 +132,28 @@ function Restaurant() {
             <h3>Who's coming?</h3>
             <label>
               <div>
-                {availablePersonList?.map((person) => (
-                  <div>
-                    <Checkbox
-                      label={person.name}
-                      value={checkedPersonList.includes(person)}
-                      onChange={(e) => handleCheckbox(e, person)}
-                      name={person.name}
-                    />
-                  </div>
-                ))}
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">Label placement</FormLabel>
+                  <FormGroup aria-label="position" row>
+                    {availablePersonList?.map((person) => (
+                      <FormControlLabel
+                        value={person.name}
+                        control={
+                          <CheckboxMUI
+                            onChange={(e) => handleCheckbox(e, person)}
+                          />
+                        }
+                        label={person.name}
+                      />
+                    ))}
+                  </FormGroup>
+                </FormControl>
               </div>
             </label>
             <h3>What day are y'all planning to go?</h3>
             <label>
               <div>
-                <RadioGroup
-                  name="radio-buttons-group"
-                >
+                <RadioGroup name="radio-buttons-group">
                   {weekdays?.map((day) => (
                     <FormControlLabel
                       label={day}
@@ -154,31 +164,35 @@ function Restaurant() {
                 </RadioGroup>
               </div>
             </label>
-            <h3>Alright hungry fella, last question. What time do you wanna dine?</h3>
+            <h3>
+              Alright hungry fella, last question. What time do you wanna dine?
+            </h3>
             <label>
               <div>
-              <RadioGroup
-                  name="radio-buttons-group"
-                >
-                {timeframes?.map((hour) => (
-                  <FormControlLabel
-                  label={hour}
-                  value={hour}
-                  control={<Radio onChange={() => handleTimeChange(hour)} />}
-                  />
-                ))}
+                <RadioGroup name="radio-buttons-group">
+                  {timeframes?.map((hour) => (
+                    <FormControlLabel
+                      label={hour}
+                      value={hour}
+                      control={
+                        <Radio onChange={() => handleTimeChange(hour)} />
+                      }
+                    />
+                  ))}
                 </RadioGroup>
               </div>
             </label>
-        
-              <div>
-                <Button className="buttons" 
+
+            <div>
+              <Button
+                className="buttons"
                 variant="contained"
                 type="submit"
-                onClick={() => getRestaurant()}>
-                  Whats for lunch mum????
-                </Button>
-              </div>
+                onClick={() => getRestaurant()}
+              >
+                Whats for lunch mum????
+              </Button>
+            </div>
 
             <div>
               {restaurant.name};{restaurant.address}
