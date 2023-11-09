@@ -1,4 +1,12 @@
 import React from "react"
+import CheckboxMUI from "@mui/material/Checkbox";
+import {
+  Button,
+  FormControlLabel,
+  Paper,
+  Switch,
+  TextField,
+} from "@mui/material";
 
 interface CheckboxProps {
     label: string;
@@ -9,9 +17,11 @@ interface CheckboxProps {
 
 export const Checkbox: React.FC<CheckboxProps> = ({ label, value, onChange, name}) => {
     return (
-      <label>
-        <input type="checkbox" checked={value} onChange={onChange} name={name} />
-        {label}
-      </label>
+      <FormControlLabel
+            label ={label}
+            control={
+        <CheckboxMUI checked={value} onChange={onChange} name={name} />
+        }
+      />
     );
   };
