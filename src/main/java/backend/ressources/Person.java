@@ -9,7 +9,9 @@ public class Person {
     private boolean isVegan;
     private boolean isVeggy;
 
-    public Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
+
+    //maybe make perosn abstract
+    public abstract Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
         this.name = name;
         this.allergies = allergies;
         this.preferences = preferences;

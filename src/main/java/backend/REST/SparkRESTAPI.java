@@ -30,6 +30,8 @@ public class SparkRESTAPI {
             Employee e = gson.fromJson(req.body(), Employee.class);
             System.out.println("E: "+e.toString());
 
+            //calls userhandling to add person to database
+
             return "";
         });
          post("/add-customer",(req,res)->{
@@ -57,8 +59,12 @@ public class SparkRESTAPI {
              Employee testEmployee = new Employee("Employee",allergies,preferences,true,false);
              Customer testCustomer = new Customer("Customer",allergies,preferences,false,false,true);
 
+             //calls userhandling to get available person-list
+
              personList.add(testEmployee);
              personList.add(testCustomer);
+
+             //creates lunch and calls getrandomrestaurant
 
              return gson.toJson(personList);
          });
