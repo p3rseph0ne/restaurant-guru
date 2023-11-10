@@ -1,11 +1,13 @@
 package backend.businesslogic;
 
+import backend.ressources.Dish;
+import backend.ressources.Menu;
 import backend.ressources.Restaurant;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class RestaurantReader {
 
@@ -25,6 +27,10 @@ public class RestaurantReader {
         try (Scanner file = new Scanner(new File(fileName))) {
             if (file.hasNextLine()){
                 //create new restaurant based on file-input
+                List<String> openingDays = new ArrayList<>();
+                List<Dish> dishes = new ArrayList<>();
+                Menu menu = new Menu(dishes);
+                restaurants.add(new Restaurant(file.nextLine(), file.nextLine(), file.nextInt(), openingDays, file.nextBoolean(), menu));
             }
 
         } catch (FileNotFoundException e) {
