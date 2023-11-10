@@ -1,8 +1,6 @@
-package backend.businesslogic;
+package backend.testing;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LunchTest {
 

@@ -2,7 +2,9 @@ package backend.ressources;
 
 import java.util.List;
 
-public class Person {
+import static java.util.stream.Collectors.joining;
+
+public abstract class Person {
     private String name;
     private List<String> allergies;
     private List<String> preferences;
@@ -11,7 +13,7 @@ public class Person {
 
 
     //maybe make perosn abstract
-    public abstract Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
+    public Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
         this.name = name;
         this.allergies = allergies;
         this.preferences = preferences;
@@ -57,5 +59,18 @@ public class Person {
 
     public void setVeggy(boolean veggy) {
         isVeggy = veggy;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                "; allergies=" + allergies.stream().map(Object::toString)
+                .collect(joining(", ")) +
+                "; preferences=" + preferences.stream().map(Object::toString)
+                .collect(joining(", ")) +
+                "; isVegan=" + isVegan +
+                "; isVeggy=" + isVeggy +
+                '}';
     }
 }
