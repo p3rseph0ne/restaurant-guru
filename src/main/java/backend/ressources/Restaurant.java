@@ -13,15 +13,23 @@ public class Restaurant {
     private boolean hasTerrace;
     private Menu menu;
 
-    public Restaurant(String name, String address, int priceRange, List<String> openingDays, boolean hasTerrace, Menu menu) {
+    public Restaurant(String name, String address,
+                      int priceRange, List<String> openingDays, boolean hasTerrace, Menu menu
+    ) {
         this.name = name;
         this.address = address;
         this.priceRange = priceRange;
         this.openingDays = openingDays;
         this.hasTerrace = hasTerrace;
         this.menu = menu;
-    }
 
+    }
+    public Restaurant(String name, String address
+    ) {
+        this.name = name;
+        this.address = address;
+
+    }
     public String getName() {
         return name;
     }

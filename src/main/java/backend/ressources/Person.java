@@ -10,21 +10,12 @@ public class Person {
     private boolean isVegan;
     private boolean isVeggy;
 
-    public Person(String id, String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
-        this.id = id;
+    public Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
         this.name = name;
         this.allergies = allergies;
         this.preferences = preferences;
         this.isVegan = isVegan;
         this.isVeggy = isVeggy;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
     public String getName() {
         return name;
@@ -64,5 +55,16 @@ public class Person {
 
     public void setVeggy(boolean veggy) {
         isVeggy = veggy;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                ", name='" + name + '\'' +
+                ", allergies=" + allergies +
+                ", preferences=" + preferences +
+                ", isVegan=" + isVegan +
+                ", isVeggy=" + isVeggy +
+                '}';
     }
 }
