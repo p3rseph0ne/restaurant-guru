@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../App.css";
-import { Checkbox } from "../components/Checkbox";
+import { Checkbox } from "../components/Checkbox.tsx";
 import "../components/types.ts";
 import {
   Button,
@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import CheckboxMUI from "@mui/material/Checkbox";
-import Header from "../components/Header";
+import Header from "../components/Header.tsx";
 
 const allergies: Allergies = {
   A: false,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../components/types.ts";
 import "../App.css";
-import { Checkbox } from "../components/Checkbox";
+import { Checkbox } from "../components/Checkbox.tsx";
 import "../components/types.ts";
 import {
   Button,
@@ -16,7 +16,7 @@ import {
   TextField,
 } from "@mui/material";
 import CheckboxMUI from "@mui/material/Checkbox";
-import Header from "../components/Header";
+import Header from "../components/Header.tsx";
 
 const allergies: Allergies = {
   A: false,
@@ -107,7 +107,7 @@ function Restaurant() {
           body: JSON.stringify({
             checkedPerson: checkedPersonList,
             day: day,
-            time: time,
+            time: time
           }),
         }
       );
@@ -133,7 +133,6 @@ function Restaurant() {
             <label>
               <div>
                 <FormControl component="fieldset">
-                 
                   <FormGroup aria-label="position" row>
                     {availablePersonList?.map((person) => (
                       <FormControlLabel

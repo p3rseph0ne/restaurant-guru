@@ -7,11 +7,6 @@
 
 .pagecontainer {
   font-family: "Arial" !important;
-  background-color: #ffffff;
-}
-
-.logo {
-  background-color: #ffffff !important;
 }
 
 .buttons {
@@ -23,7 +18,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
   line-height: 150%;
 }
 
@@ -40,12 +34,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #1c1a1a;
+  padding: 1rem;
+  border-radius: .5rem;
 }
 
 label {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 body {
@@ -83,4 +79,12 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+body {
+  background-color: #1c1a1a;
+}
+
+* {
+  color: #fafafa !important;
 }

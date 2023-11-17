@@ -4,15 +4,13 @@ import java.util.List;
 
 import static java.util.stream.Collectors.joining;
 
-public abstract class Person {
+public class Person {
     private String name;
     private List<String> allergies;
     private List<String> preferences;
     private boolean isVegan;
     private boolean isVeggy;
 
-
-    //maybe make perosn abstract
     public Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
         this.name = name;
         this.allergies = allergies;

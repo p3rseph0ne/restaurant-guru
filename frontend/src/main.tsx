@@ -5,10 +5,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import Person from './routes/App_Person.tsx'
+import Person from './routes/Person.tsx'
 import Root from "./routes/root.tsx";
 import ErrorPage from "./routes/error-page.tsx";
-import Restaurant from './routes/App_Restaurant.tsx'
+import Restaurant from './routes/Restaurant.tsx'
 
 const router = createBrowserRouter([
   {
