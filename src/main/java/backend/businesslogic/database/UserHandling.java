@@ -108,24 +108,4 @@ public class UserHandling {
         return this.getAllUsers();
     }
 
-        /*public static void main(String[] args) {
-        UserHandling uh = new UserHandling();
-        ArrayList<String> allergies = new ArrayList<>();
-        allergies.add("A");
-        allergies.add("B");
-        ArrayList<String> preferences = new ArrayList<>();
-        preferences.add("italian");
-        preferences.add("asian");
-        Employee emp = new Employee("Employee12",allergies,preferences,true,false);
-        String allergieString = emp.getAllergies().stream().map(Object::toString)
-                .collect(joining(", "));
-        System.out.println("allergiestring "+allergieString);
-        String prefString = emp.getPreferences().stream().map(Object::toString)
-                .collect(joining(", "));
-        System.out.println("prefstring "+prefString);
-
-        String resp = uh.createNewUser(emp.getName(),allergieString,prefString,emp.isVegan(),emp.isVeggy(),false,false);
-
-        uh.getPersonList();
-    }*/
 }
