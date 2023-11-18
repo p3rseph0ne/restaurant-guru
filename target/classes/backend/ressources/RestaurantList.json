@@ -1,0 +1,328 @@
+[
+  {
+    "name": "Trattoria del Gusto",
+    "address": "Griesplatz 7, 8020 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Spaghetti Bolognese", "allergens": ["Gluten", "Dairy"], "cuisine": "Italian", "isVegan": false, "isVeggy": true, "price": 12.99},
+        {"name": "Margherita Pizza", "allergens": ["Dairy"], "cuisine": "Italian", "isVegan": true, "isVeggy": true, "price": 10.99}
+      ]
+    }
+  },
+  {
+    "name": "Sakura Sushi",
+    "address": "Herrengasse 12, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Sashimi Platter", "allergens": ["Fish"], "cuisine": "Japanese", "isVegan": false, "isVeggy": false, "price": 25.99},
+        {"name": "Vegetable Tempura", "allergens": ["Gluten"], "cuisine": "Japanese", "isVegan": true, "isVeggy": true, "price": 18.99}
+      ]
+    }
+  },
+  {
+    "name": "Le Bistro Français",
+    "address": "Am Eisernen Tor 4, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Coq au Vin", "allergens": ["Wine"], "cuisine": "French", "isVegan": false, "isVeggy": false, "price": 16.99},
+        {"name": "Ratatouille", "allergens": ["Olive Oil"], "cuisine": "French", "isVegan": true, "isVeggy": true, "price": 14.99}
+      ]
+    }
+  },
+  {
+    "name": "Graziano's Grill",
+    "address": "Hauptplatz 15, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "T-Bone Steak", "allergens": ["Meat"], "cuisine": "Steakhouse", "isVegan": false, "isVeggy": false, "price": 29.99},
+        {"name": "Grilled Portobello Mushrooms", "allergens": ["Soy Sauce"], "cuisine": "Steakhouse", "isVegan": true, "isVeggy": true, "price": 22.99}
+      ]
+    }
+  },
+  {
+    "name": "Mediterranean Delight",
+    "address": "Andreas-Hofer-Platz 9, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Greek Salad", "allergens": ["Olive"], "cuisine": "Greek", "isVegan": true, "isVeggy": true, "price": 10.99},
+        {"name": "Paella", "allergens": ["Seafood"], "cuisine": "Spanish", "isVegan": false, "isVeggy": false, "price": 20.99}
+      ]
+    }
+  },
+  {
+    "name": "Schnitzel Palace",
+    "address": "Klosterwiesgasse 5, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Wiener Schnitzel", "allergens": ["Egg"], "cuisine": "Austrian", "isVegan": false, "isVeggy": false, "price": 14.99},
+        {"name": "Vegetarian Schnitzel", "allergens": ["Soy"], "cuisine": "Austrian", "isVegan": true, "isVeggy": true, "price": 12.99}
+      ]
+    }
+  },
+  {
+    "name": "Taste of India",
+    "address": "Färbergasse 16, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Chicken Tikka Masala", "allergens": ["Dairy"], "cuisine": "Indian", "isVegan": false, "isVeggy": false, "price": 16.99},
+        {"name": "Vegetable Biryani", "allergens": ["Nuts"], "cuisine": "Indian", "isVegan": true, "isVeggy": true, "price": 14.99}
+      ]
+    }
+  },
+  {
+    "name": "Bavarian Feast",
+    "address": "Jakominiplatz 8, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Pork Knuckle", "allergens": ["Meat"], "cuisine": "German", "isVegan": false, "isVeggy": false, "price": 18.99},
+        {"name": "Pretzels with Mustard", "allergens": ["Gluten"], "cuisine": "German", "isVegan": true, "isVeggy": true, "price": 12.99}
+      ]
+    }
+  },
+  {
+    "name": "Vegetarian Haven",
+    "address": "Opernring 24, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Quinoa Salad", "allergens": ["Nuts"], "cuisine": "Vegetarian", "isVegan": true, "isVeggy": true, "price": 11.99},
+        {"name": "Eggplant Parmesan", "allergens": ["Dairy"], "cuisine": "Vegetarian", "isVegan": false, "isVeggy": true, "price": 14.99}
+      ]
+    }
+  },
+  {
+    "name": "Seafood Delight",
+    "address": "Radetzkystraße 14, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Lobster Linguine", "allergens": ["Shellfish"], "cuisine": "Seafood", "isVegan": false, "isVeggy": false, "price": 29.99},
+        {"name": "Vegetarian Sushi Rolls", "allergens": ["Soy"], "cuisine": "Seafood", "isVegan": true, "isVeggy": true, "price": 22.99}
+      ]
+    }
+  },
+  {
+    "name": "Turkish Delight",
+    "address": "Rathausplatz 10, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Iskender Kebab", "allergens": ["Meat"], "cuisine": "Turkish", "isVegan": false, "isVeggy": false, "price": 14.99},
+        {"name": "Falafel Wrap", "allergens": ["Gluten"], "cuisine": "Turkish", "isVegan": true, "isVeggy": true, "price": 12.99}
+      ]
+    }
+  },
+  {
+    "name": "Southwestern Grill",
+    "address": "Sackstraße 7, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "BBQ Ribs", "allergens": ["Meat"], "cuisine": "American", "isVegan": false, "isVeggy": false, "price": 24.99},
+        {"name": "Vegetarian Quesadilla", "allergens": ["Dairy"], "cuisine": "American", "isVegan": true, "isVeggy": true, "price": 17.99}
+      ]
+    }
+  },
+  {
+    "name": "Café Vienna",
+    "address": "Leonhardstraße 6, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Sacher Torte", "allergens": ["Nuts", "Dairy"], "cuisine": "Austrian", "isVegan": false, "isVeggy": false, "price": 9.99},
+        {"name": "Melange Coffee", "allergens": ["None"], "cuisine": "Austrian", "isVegan": true, "isVeggy": true, "price": 4.99}
+      ]
+    }
+  },
+  {
+    "name": "Noodle House",
+    "address": "Bürgergasse 3, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Pad Thai", "allergens": ["Peanuts", "Shellfish"], "cuisine": "Thai", "isVegan": false, "isVeggy": false, "price": 14.99},
+        {"name": "Vegetable Ramen", "allergens": ["Soy"], "cuisine": "Japanese", "isVegan": true, "isVeggy": true, "price": 11.99}
+      ]
+    }
+  },
+  {
+    "name": "La Piazza",
+    "address": "Jakominiplatz 10, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Margherita Pizza", "allergens": ["Dairy"], "cuisine": "Italian", "isVegan": true, "isVeggy": true, "price": 12.99},
+        {"name": "Risotto al Funghi", "allergens": ["Mushrooms"], "cuisine": "Italian", "isVegan": false, "isVeggy": true, "price": 15.99}
+      ]
+    }
+  },
+  {
+    "name": "Flavors of Mexico",
+    "address": "Herrengasse 8, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Tacos al Pastor", "allergens": ["Meat"], "cuisine": "Mexican", "isVegan": false, "isVeggy": false, "price": 10.99},
+        {"name": "Guacamole with Tortilla Chips", "allergens": ["Corn"], "cuisine": "Mexican", "isVegan": true, "isVeggy": true, "price": 8.99}
+      ]
+    }
+  },
+  {
+    "name": "Chez Pierre",
+    "address": "Färbergasse 22, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Escargot Bourguignon", "allergens": ["Butter"], "cuisine": "French", "isVegan": false, "isVeggy": false, "price": 20.99},
+        {"name": "Crème Brûlée", "allergens": ["Dairy", "Egg"], "cuisine": "French", "isVegan": false, "isVeggy": false, "price": 16.99}
+      ]
+    }
+  },
+  {
+    "name": "Curry House",
+    "address": "Karmeliterplatz 5, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Chicken Curry", "allergens": ["Dairy"], "cuisine": "Indian", "isVegan": false, "isVeggy": false, "price": 15.99},
+        {"name": "Vegetable Korma", "allergens": ["Nuts"], "cuisine": "Indian", "isVegan": true, "isVeggy": true, "price": 12.99}
+      ]
+    }
+  },
+  {
+    "name": "The Grill House",
+    "address": "Hauptplatz 10, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Ribeye Steak", "allergens": ["Meat"], "cuisine": "Steakhouse", "isVegan": false, "isVeggy": false, "price": 28.99},
+        {"name": "Grilled Vegetable Skewers", "allergens": ["None"], "cuisine": "Steakhouse", "isVegan": true, "isVeggy": true, "price": 21.99}
+      ]
+    }
+  },
+  {
+    "name": "Sabor Español",
+    "address": "Andreas-Hofer-Platz 15, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Paella Valenciana", "allergens": ["Shellfish"], "cuisine": "Spanish", "isVegan": false, "isVeggy": false, "price": 19.99},
+        {"name": "Gazpacho", "allergens": ["None"], "cuisine": "Spanish", "isVegan": true, "isVeggy": true, "price": 14.99}
+      ]
+    }
+  },
+  {
+    "name": "Dolce Vita Gelato",
+    "address": "Griesgasse 14, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Stracciatella Gelato", "allergens": ["Dairy"], "cuisine": "Italian", "isVegan": false, "isVeggy": false, "price": 6.99},
+        {"name": "Mango Sorbet", "allergens": ["None"], "cuisine": "Italian", "isVegan": true, "isVeggy": true, "price": 5.99}
+      ]
+    }
+  },
+  {
+    "name": "Green Leaf Café",
+    "address": "Radetzkystraße 20, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Avocado Toast", "allergens": ["Gluten"], "cuisine": "Healthy", "isVegan": true, "isVeggy": true, "price": 10.99},
+        {"name": "Quinoa Bowl", "allergens": ["Nuts"], "cuisine": "Healthy", "isVegan": true, "isVeggy": true, "price": 12.99}
+      ]
+    }
+  },
+  {
+    "name": "Taj Mahal",
+    "address": "Eisernes Tor 10, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "Lamb Biryani", "allergens": ["Meat"], "cuisine": "Indian", "isVegan": false, "isVeggy": false, "price": 17.99},
+        {"name": "Vegetable Samosas", "allergens": ["Gluten"], "cuisine": "Indian", "isVegan": true, "isVeggy": true, "price": 13.99}
+      ]
+    }
+  },
+  {
+    "name": "Burger Heaven",
+    "address": "Sackstraße 15, 8010 Graz, Austria",
+    "priceRange": 2,
+    "openingDays": ["Tuesday", "Thursday", "Saturday"],
+    "hasTerrace": false,
+    "menu": {
+      "dishes": [
+        {"name": "Classic Beef Burger", "allergens": ["Meat", "Dairy"], "cuisine": "American", "isVegan": false, "isVeggy": false, "price": 13.99},
+        {"name": "Vegetarian Black Bean Burger", "allergens": ["Soy"], "cuisine": "American", "isVegan": true, "isVeggy": true, "price": 11.99}
+      ]
+    }
+  },
+  {
+    "name": "Golden Wok",
+    "address": "Bürgergasse 10, 8010 Graz, Austria",
+    "priceRange": 3,
+    "openingDays": ["Monday", "Wednesday", "Friday"],
+    "hasTerrace": true,
+    "menu": {
+      "dishes": [
+        {"name": "General Tso's Chicken", "allergens": ["Soy"], "cuisine": "Chinese", "isVegan": false, "isVeggy": false, "price": 16.99},
+        {"name": "Vegetable Spring Rolls", "allergens": ["Gluten"], "cuisine": "Chinese", "isVegan": true, "isVeggy": true, "price": 13.99}
+      ]
+    }
+  }
+]
+
