@@ -37,6 +37,7 @@
   background-color: #1c1a1a;
   padding: 1rem;
   border-radius: .5rem;
+  width: 600px;
 }
 
 label {
@@ -87,4 +88,22 @@ body {
 
 * {
   color: #fafafa !important;
+}
+
+.persons .MuiFormGroup-root {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.modalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalContent {
+  background: #deac51;
+  padding: 1rem;
+  border-radius: .5rem;
 }

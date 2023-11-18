@@ -4,7 +4,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.joining;
 
-public class Person {
+public class Person implements PersonIF{
     private String name;
     private List<String> allergies;
     private List<String> preferences;
@@ -57,6 +57,11 @@ public class Person {
 
     public void setVeggy(boolean veggy) {
         isVeggy = veggy;
+    }
+
+    @Override
+    public void sayHello() {
+        System.out.println("Hello, I'm "+name);
     }
 
     @Override

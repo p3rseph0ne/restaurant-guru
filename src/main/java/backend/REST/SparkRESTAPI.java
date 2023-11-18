@@ -53,6 +53,14 @@ public class SparkRESTAPI {
              return userhandler.createNewUser(c.getName(),allergies,preferences,c.isVegan(),c.isVeggy(),true,c.isPaying());
          });
 
+        post("/delete-person",(req, res)->{
+            System.out.println(req.body().split("\"")[3]);
+            //call userhandling to delete user
+            userhandler.deleteUser(req.body().split("\"")[3]);
+
+            return "SUCCESS";
+         });
+
         post("/restaurant/whatsforlunchmum",(req,res)->{
              System.out.println(req.body());
 
@@ -63,7 +71,6 @@ public class SparkRESTAPI {
                 lunch.readRestaurants();
                 lunch.readAllergiesAndPreferences();
                 lunch.defineAvailableRestaurants();
-                System.out.println(lunch.toString());
                 Restaurant restaurant = lunch.randomRestaurant();
                 System.out.println("sending restaurant to frontend: "+restaurant.getName());
                 return gson.toJson(restaurant);
@@ -72,7 +79,6 @@ public class SparkRESTAPI {
             }
 
             return null;
-
         });
 
          //transfer list of available persons to frontend

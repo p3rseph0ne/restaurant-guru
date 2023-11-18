@@ -57,7 +57,8 @@ public class UserHandling {
         }
         return "NOPE";
     }
-    public void getAllUsers(){
+    public List<Person> getAllUsers(){
+        List<Person> personList = new ArrayList<Person>();
         String sql ="SELECT * FROM person";
         try (Connection conn = DriverManager.getConnection(url)){
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -86,11 +87,25 @@ public class UserHandling {
         } catch (SQLException e){
             e.printStackTrace();
         }
+        return personList;
+    }
+
+    public void deleteUser(String name){
+        String sql = "DELETE FROM person where name = ?";
+        try (Connection conn = DriverManager.getConnection(url)){
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+                statement.setString(1, name);
+                statement.executeUpdate();
+                System.out.println("deleted user "+name);
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     public List<Person> getPersonList() {
-        this.getAllUsers();
-        return personList;
+        return this.getAllUsers();
     }
 
         /*public static void main(String[] args) {

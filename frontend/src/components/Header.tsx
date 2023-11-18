@@ -7,6 +7,7 @@ import Logo from "../assets/logo.png";
 import { useNavigate } from "react-router";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -26,13 +27,16 @@ const Header: React.FC = () => {
           justifyContent: 'space-between'
         }}
         >
-        <Image
+          <Link to="/">
+          <Image
           src={Logo}
           className="logo"
           height="100px"
           width="75px"
           alt="logo"
         />
+          </Link>
+
         <Box>
         </Box>
       </Toolbar>

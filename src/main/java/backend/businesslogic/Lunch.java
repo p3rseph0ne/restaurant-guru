@@ -120,9 +120,15 @@ public class Lunch {
     //no available restaurant exception ?
     public Restaurant randomRestaurant(){
         Random rndm = new Random();
-        int rndmNumber = rndm.nextInt(0, availableRestaurants.size());
-        System.out.println("random restaurant: "+availableRestaurants.get(rndmNumber).getName());
-        return availableRestaurants.get(rndmNumber);
+        try {
+            int rndmNumber = rndm.nextInt(0, availableRestaurants.size());
+            System.out.println("random restaurant: "+availableRestaurants.get(rndmNumber).getName());
+            return availableRestaurants.get(rndmNumber);
+        } catch (Exception e) {
+            System.err.println(e.toString());
+        }
+
+        return null;
     }
 
     @Override
