@@ -1,4 +1,4 @@
-package backend.REST;
+/*package backend.REST;
 
 import backend.businesslogic.Lunch;
 import backend.businesslogic.database.UserHandling;
@@ -90,3 +90,4 @@ public class SparkRESTAPI {
 
     }
 }
+*/

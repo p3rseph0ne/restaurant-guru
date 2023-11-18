@@ -1,12 +1,6 @@
 import React from "react"
 import CheckboxMUI from "@mui/material/Checkbox";
-import {
-  Button,
-  FormControlLabel,
-  Paper,
-  Switch,
-  TextField,
-} from "@mui/material";
+import {FormControlLabel,} from "@mui/material";
 
 interface CheckboxProps {
     label: string;
