@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RestaurantReader {
-    /*testing the import
     public static void main(String[] args) {
 
         try {
@@ -22,7 +21,7 @@ public class RestaurantReader {
             e.printStackTrace();
         }
     }
-    */
+
 
     private List<Restaurant> restaurants;
     private final String fileName = "C:\\Users\\lorenz.moser\\Desktop\\Uni-Projekt\\restaurant-guru\\src\\main\\java\\backend\\ressources\\RestaurantList.json";
@@ -50,10 +49,9 @@ public class RestaurantReader {
 
                 throw new IncorrectFileNameException("Incorrect filename : " + fileName );
         }
-
-
+        //logging amount of restaurants
+        System.out.println("Number of restaurants after update: " + restaurants.size());
     }
-    /* This is for testing the import
     public void printData() {
 
 
@@ -77,7 +75,6 @@ public class RestaurantReader {
             System.out.println("=====================================");
         }
     }
-  */
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
