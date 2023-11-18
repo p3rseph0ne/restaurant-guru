@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react";
 import "../components/types.ts";
 import "../App.css";
-import { Checkbox } from "../components/Checkbox";
 import "../components/types.ts";
 import {
+  Box,
   Button,
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormLabel,
-  Paper,
+  Modal,
   Radio,
   RadioGroup,
-  Switch,
-  TextField,
+  Typography,
 } from "@mui/material";
 import CheckboxMUI from "@mui/material/Checkbox";
-import Header from "../components/Header";
 
 const allergies: Allergies = {
   A: false,
@@ -60,9 +57,15 @@ function Restaurant() {
     name: "",
     address: "",
   });
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   useEffect(() => {
     getAvailablePersonList();
+
+    return () => {
+      setCheckedePersonList([]);
+      setAvailablePersonList([]);
+    }
   }, []);
 
   const handleCheckbox = (
@@ -85,7 +88,7 @@ function Restaurant() {
 
   const handleTimeChange = (newTime: string) => {
     setTime(newTime);
-  };
+  }; 
 
   async function getAvailablePersonList() {
     try {
@@ -107,13 +110,16 @@ function Restaurant() {
           body: JSON.stringify({
             checkedPerson: checkedPersonList,
             day: day,
-            time: time,
+            time: time
           }),
         }
       );
 
       const restaurantJson = (await response.json()) as Restaurant;
-      console.log(restaurantJson);
+  
+      if (restaurantJson.name) {
+        setIsOpen(true)
+      }
 
       setRestaurant(restaurantJson);
     } catch (e) {
@@ -124,16 +130,13 @@ function Restaurant() {
   console.log(restaurant);
 
   return (
-    <div className="pagecontainer">
-      <Header />
-      <div className="formcontainer">
+     <div className="formcontainer">
         <div className="form">
           <div className="flex-container">
             <h3>Who's coming?</h3>
             <label>
-              <div>
+              <div className="persons">
                 <FormControl component="fieldset">
-                 
                   <FormGroup aria-label="position" row>
                     {availablePersonList?.map((person) => (
                       <FormControlLabel
@@ -194,13 +197,27 @@ function Restaurant() {
               </Button>
             </div>
 
-            <div>
-              {restaurant.name};{restaurant.address}
-            </div>
+            <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+            <Box className="modalContainer">
+              <Box className="modalContent">
+                <Typography>
+                  Restaurant
+                </Typography>
+                <Typography>
+                {restaurant.name}
+                </Typography>
+                <Typography>
+                  Adress
+                </Typography>
+                <Typography>
+                {restaurant.address}
+                </Typography>
+              </Box>
+            </Box>
+            </Modal>
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

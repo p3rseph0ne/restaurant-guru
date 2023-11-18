@@ -5,25 +5,39 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import Person from './routes/App_Person.tsx'
+import Person from './routes/Person.tsx'
 import Root from "./routes/root.tsx";
-import ErrorPage from "./routes/error-page.tsx";
-import Restaurant from './routes/App_Restaurant.tsx'
+import ErrorPage from "./routes/ErrorPage.tsx";
+import Restaurant from './routes/Restaurant.tsx';
+import DeletePerson from './routes/DeletePerson.tsx';
+import Page from "./routes/Page.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Page />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        index: true,
+        element: <Root />
+      },
+      {
+        path: "/person",
+        element: <Person />
+      },
+      {
+        path: "/restaurant",
+        element: <Restaurant />
+      },
+      {
+        path: "/delete-Person",
+        element: <DeletePerson />
+      }
+    ]
   },
-  {
-    path: "/person",
-    element: <Person />
-  },
-  {
-    path: "/restaurant",
-    element: <Restaurant />
-  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

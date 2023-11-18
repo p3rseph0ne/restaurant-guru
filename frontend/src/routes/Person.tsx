@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../App.css";
-import { Checkbox } from "../components/Checkbox";
+import { Checkbox } from "../components/Checkbox.tsx";
 import "../components/types.ts";
 import {
   Button,
@@ -8,7 +8,6 @@ import {
   TextField,
 } from "@mui/material";
 import CheckboxMUI from "@mui/material/Checkbox";
-import Header from "../components/Header";
 
 const allergies: Allergies = {
   A: false,
@@ -132,8 +131,6 @@ function App() {
   }
 
   return (
-    <div className="pagecontainer">
-      <Header />
       <div className="formcontainer">
         <div className="form">
           <div className="flex-container">
@@ -234,7 +231,6 @@ function App() {
             </div>
             <div>
               <Button
-                className="buttons"
                 variant="contained"
                 type="submit"
                 onClick={checkPerson}
@@ -246,8 +242,6 @@ function App() {
           </div>
         </div>
       </div>
-      //DGSVO auf süß?
-    </div>
   );
 }
 

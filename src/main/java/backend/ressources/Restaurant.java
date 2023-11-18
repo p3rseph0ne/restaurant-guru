@@ -22,6 +22,11 @@ public class Restaurant {
         this.menu = menu;
     }
 
+    public Restaurant(String name, String address){
+        this.name = name;
+        this.address = address;
+    }
+
     public String getName() {
         return name;
     }

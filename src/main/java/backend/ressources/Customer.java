@@ -10,6 +10,15 @@ public class Customer extends Person {
         this.isPaying = isPaying;
     }
 
+    public boolean isPaying() {
+        return isPaying;
+    }
 
-
+    @Override
+    public String toString() {
+        super.toString();
+        return "Customer{" +
+                "isPaying=" + isPaying +
+                '}';
+    }
 }

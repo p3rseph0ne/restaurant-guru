@@ -2,16 +2,16 @@ package backend.ressources;
 
 import java.util.List;
 
-public class Person {
+import static java.util.stream.Collectors.joining;
+
+public class Person implements PersonIF{
     private String name;
     private List<String> allergies;
     private List<String> preferences;
     private boolean isVegan;
     private boolean isVeggy;
 
-
-    //maybe make perosn abstract
-    public abstract Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
+    public Person(String name, List<String> allergies, List<String> preferences, boolean isVegan, boolean isVeggy) {
         this.name = name;
         this.allergies = allergies;
         this.preferences = preferences;
@@ -57,5 +57,23 @@ public class Person {
 
     public void setVeggy(boolean veggy) {
         isVeggy = veggy;
+    }
+
+    @Override
+    public void sayHello() {
+        System.out.println("Hello, I'm "+name);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                "; allergies=" + allergies.stream().map(Object::toString)
+                .collect(joining(", ")) +
+                "; preferences=" + preferences.stream().map(Object::toString)
+                .collect(joining(", ")) +
+                "; isVegan=" + isVegan +
+                "; isVeggy=" + isVeggy +
+                '}';
     }
 }
