@@ -77,6 +77,7 @@ public class Lunch {
 
     //no available restaurant exception ?
     public Restaurant randomRestaurant(){
+        System.out.println("Faith loading.. ");
         Random rndm = new Random();
         try {
             int rndmNumber = rndm.nextInt(0, availableRestaurants.size());

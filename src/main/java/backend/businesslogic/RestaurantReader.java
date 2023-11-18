@@ -24,7 +24,7 @@ public class RestaurantReader {
 
 
     private List<Restaurant> restaurants;
-    private final String fileName = "C:\\Users\\lorenz.moser\\Desktop\\Uni-Projekt\\restaurant-guru\\src\\main\\java\\backend\\ressources\\RestaurantList.json";
+    private final String fileName = "src/main/java/backend/ressources/RestaurantList.json";
 
 
     public RestaurantReader() throws IncorrectFileNameException {
