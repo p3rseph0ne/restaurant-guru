@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * UserHandling class implements the necessary jdbc functionality to safe, get and delete Persons from the given database
+ * A UserHandling object is created and used in the rest api
  */
 public class UserHandling {
     //https://www.infoworld.com/article/3388036/what-is-jdbc-introduction-to-java-database-connectivity.html

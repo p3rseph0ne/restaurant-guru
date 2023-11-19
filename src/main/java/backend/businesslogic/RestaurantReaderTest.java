@@ -23,7 +23,7 @@ public class RestaurantReaderTest {
             // Add more assertions for other properties
 
 
-        } catch (IncorrectFileNameException e) {
+        } catch (Exception e) {
             // Handle the exception if needed
             e.printStackTrace();
         }

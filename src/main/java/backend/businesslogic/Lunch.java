@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Lunch represents one Lunch-outing and therefor contains all attendees and available restaurants
+ * A Lunch Object is used in the REST-API when the User wants to create a new lunch outing/asks for a random restaurant
+ * suggestion that caters to the dietary needs of all attendees
+ */
 public class Lunch {
 
     private List<Person> checkedPerson;
@@ -16,7 +21,13 @@ public class Lunch {
     private List<Restaurant> allRestaurants;
     private List<Restaurant> availableRestaurants;
 
-    public Lunch(List<Person> checkedPerson, String day, String time) throws IncorrectFileNameException {
+    /**
+     * Creates a new Lunch with the given arguments & calls the methods necessary for set-up
+     * @param checkedPerson
+     * @param day
+     * @param time
+     */
+    public Lunch(List<Person> checkedPerson, String day, String time){
         this.checkedPerson = checkedPerson;
         this.day = day;
         this.time = time;
@@ -24,13 +35,16 @@ public class Lunch {
         readRestaurants();
         readAllergiesAndPreferences();
         defineAvailableRestaurants();
-
     }
 
     public List<Restaurant> getAvailableRestaurants() {
         return availableRestaurants;
     }
 
+    /**
+     * Iterates over every person that attends the lunch to determine their allergies and preferences and stores
+     * them in a temp-list
+     */
     public void readAllergiesAndPreferences(){
 
         for(Person p : checkedPerson){
@@ -48,15 +62,22 @@ public class Lunch {
 
     }
 
-    public void readRestaurants() throws IncorrectFileNameException {
+    /**
+     * creates a RestaurantReader instance that reads the restaurant data stored in a separate file and
+     * stores them in a temp-list
+     */
+    public void readRestaurants() {
         allRestaurants = new ArrayList<Restaurant>();
-
         RestaurantReader restaurantReader = new RestaurantReader();
-        //restaurantReader.update();
         allRestaurants = restaurantReader.getRestaurants();
-
-        System.out.println("size of all restaurants: "+allRestaurants.size());
     }
+
+    /**
+     * Defines which of the restaurants in allRestaurants are actually available/suitable for the planned lunch
+     * outing by iterating over all restaurants, checking if the current restaurant of the iteration is open
+     * on the day of the outing and if it has any dishes in the menu that are safe for everyone to eat, depending
+     * on the allergies of the attendees. A fitting restaurant will be stored in availableRestaurants.
+     */
     public void defineAvailableRestaurants(){
         System.out.println("finding available restaurant");
         availableRestaurants = new ArrayList<Restaurant>();
@@ -75,7 +96,13 @@ public class Lunch {
         }
     }
 
-    //no available restaurant exception ?
+    /**
+     * Generates a random number between 0 and the number of restaurants that are available for that outing and then
+     * returns the restaurant thats in that place of the list of available restaurants
+     * If not restaurants are available, a NoAvailableRestaurantException will be thrown and a new Restaurant Object
+     * with the information that no restaurant is available will be returned to the frontend for the user to see
+     * @return
+     */
     public Restaurant randomRestaurant(){
         if(availableRestaurants.isEmpty()){
             System.out.println("is empty, no good");
@@ -85,8 +112,6 @@ public class Lunch {
                 return new Restaurant("No restaurant available","please try another combination of attendees or day/time");
             }
         }
-
-        System.out.println("Faith loading.. ");
         Random rndm = new Random();
         try {
             int rndmNumber = rndm.nextInt(0, availableRestaurants.size());
@@ -95,7 +120,6 @@ public class Lunch {
         } catch (Exception e) {
             System.err.println(e.toString());
         }
-
         return null;
     }
 

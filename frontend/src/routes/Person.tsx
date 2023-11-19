@@ -3,9 +3,12 @@ import "../App.css";
 import { Checkbox } from "../components/Checkbox.tsx";
 import "../components/types.ts";
 import {
+  Box,
   Button,
   FormControlLabel,
   TextField,
+  Typography,
+  Modal,
 } from "@mui/material";
 import CheckboxMUI from "@mui/material/Checkbox";
 
@@ -57,6 +60,9 @@ function App() {
     setPersonObject(e.target.name, e.target.value);
   };
 
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [backendMsg, setBackendMsg] = useState<String>("")
+
   function setPersonObject(
     key: string,
     value: string | boolean | Allergies | Preferences
@@ -105,13 +111,12 @@ function App() {
         isVeggy: person.isVeggy,
       });
     }
-
     createPerson(endpoint, person_body);
   }
 
   async function createPerson(endpoint: string, person_body: string) {
     try {
-      await fetch(endpoint, {
+      const response = await fetch(endpoint, {
         method: "POST",
         body: person_body,
       });
@@ -125,6 +130,15 @@ function App() {
         isCustomer: false,
         isPaying: false,
       });
+
+      const message = await response.json() as String;
+
+      if(message){
+        setIsOpen(true)
+      }
+
+      setBackendMsg(message);
+
     } catch (e) {
       console.error(e);
     }
@@ -238,7 +252,19 @@ function App() {
               >
                 Create your lovely Co-Worker or Customer
               </Button>
-            </div>
+              </div>
+
+              <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+            <Box className="modalContainer">
+              <Box className="modalContent">
+                <Typography>
+                  {backendMsg}
+                </Typography>
+              </Box>
+            </Box>
+            </Modal>
+
+
           </div>
         </div>
       </div>

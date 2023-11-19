@@ -26,7 +26,7 @@ public class RestaurantReader {
      * the available restaurant data
      * @throws IncorrectFileNameException
      */
-    public RestaurantReader() throws IncorrectFileNameException {
+    public RestaurantReader(){
         restaurants = new ArrayList<>();
         update();
     }
@@ -35,7 +35,7 @@ public class RestaurantReader {
      * Read the restaurant data from the given json file. File contains name, adress, menu and dish data for the restaurant
      * @throws IncorrectFileNameException
      */
-    private void update() throws IncorrectFileNameException {
+    private void update(){
 
         //implement reading json file with restaurant data
         try {
@@ -44,7 +44,11 @@ public class RestaurantReader {
             Restaurant[] restaurantArray = gson.fromJson(reader, Restaurant[].class);
             restaurants = Arrays.asList(restaurantArray);
             } catch (FileNotFoundException e) {
-            throw new IncorrectFileNameException("Incorrect filename : " + fileName );
+            try {
+                throw new IncorrectFileNameException("Incorrect filename : " + fileName );
+            } catch (IncorrectFileNameException ex) {
+                ex.printStackTrace();
+            }
         }
 
     }
