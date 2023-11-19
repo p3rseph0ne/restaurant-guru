@@ -10,26 +10,26 @@ import {
 import CheckboxMUI from "@mui/material/Checkbox";
 
 const allergies: Allergies = {
-  A: false,
-  B: false,
-  C: false,
-  D: false,
-  E: false,
-  F: false,
-  G: false,
-  H: false,
-  L: false,
-  M: false,
-  N: false,
-  O: false,
-  P: false,
-  R: false,
+  Gluten: false,
+  Fish: false,
+  Nuts: false,
+  Egg: false,
+  Shellfish: false,
+  Lupins: false,
+  Lactose: false,
+  Peanut: false,
+  Molluscs: false,
+  Soybeans: false,
+  SesameSeeds: false,
+  Mustard: false,
+  Celery: false,
+  Sulfites: false,
 };
 
 const preferences: Preferences = {
-  asian: false,
-  austrian: false,
-  italian: false,
+  Asian: false,
+  Austrian: false,
+  Italian: false,
 };
 
 function App() {
