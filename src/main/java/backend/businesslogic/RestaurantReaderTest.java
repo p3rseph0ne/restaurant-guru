@@ -12,7 +12,7 @@ public class RestaurantReaderTest {
     public void testRestaurantReader() {
         try {
             RestaurantReader restaurantReader = new RestaurantReader();
-            restaurantReader.update();
+            //restaurantReader.update();
             assertNotNull(restaurantReader.getRestaurants());
             assertEquals(25, restaurantReader.getRestaurants().size()); // Assuming 25 restaurants are loaded
 
@@ -22,8 +22,6 @@ public class RestaurantReaderTest {
             assertEquals("Griesplatz 7, 8020 Graz, Austria", firstRestaurant.getAddress());
             // Add more assertions for other properties
 
-            // Test the printData method
-            restaurantReader.printData();
 
         } catch (IncorrectFileNameException e) {
             // Handle the exception if needed

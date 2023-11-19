@@ -52,7 +52,7 @@ public class Lunch {
         allRestaurants = new ArrayList<Restaurant>();
 
         RestaurantReader restaurantReader = new RestaurantReader();
-        restaurantReader.update();
+        //restaurantReader.update();
         allRestaurants = restaurantReader.getRestaurants();
 
         System.out.println("size of all restaurants: "+allRestaurants.size());

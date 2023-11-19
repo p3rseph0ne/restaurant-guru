@@ -72,7 +72,6 @@ public class SparkRESTAPI {
                 lunch.readAllergiesAndPreferences();
                 lunch.defineAvailableRestaurants();
                 Restaurant restaurant = lunch.randomRestaurant();
-                System.out.println("sending restaurant to frontend: "+restaurant.getName());
                 return gson.toJson(restaurant);
             }catch(Exception e){
                 System.err.println(e.toString());
