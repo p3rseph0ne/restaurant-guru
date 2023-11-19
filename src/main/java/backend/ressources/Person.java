@@ -4,6 +4,10 @@ import java.util.List;
 
 import static java.util.stream.Collectors.joining;
 
+/**
+ * Class Person implements the Person IF, is used as a "type" throughout the application to handle either an employee
+ * (extends person) or a customer (extends person) if the difference between them doesn't matter to reduce code replication
+ */
 public class Person implements PersonIF{
     private String name;
     private List<String> allergies;

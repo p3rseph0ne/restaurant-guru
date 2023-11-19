@@ -192,6 +192,7 @@ function Restaurant() {
                 variant="contained"
                 type="submit"
                 onClick={() => getRestaurant()}
+                disabled={!checkedPersonList || !day || !time}
               >
                 Whats for lunch mum????
               </Button>

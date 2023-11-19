@@ -89,6 +89,7 @@ function DeletePerson() {
               variant="contained"
               type="submit"
               onClick={() => deletePerson()}
+              disabled={!checkedPerson}
             >
               MAKE THEM LEAVE
             </Button>

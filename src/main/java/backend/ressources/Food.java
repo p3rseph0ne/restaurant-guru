@@ -2,6 +2,9 @@ package backend.ressources;
 
 import java.util.List;
 
+/**
+ * Food is an abstract class and therefor only functions as a "template" for dishes and can not be instanced as itself
+ */
 public abstract class Food {
     private List<String> allergens;
     private boolean isVegan;
@@ -12,6 +15,7 @@ public abstract class Food {
         this.isVegan = isVegan;
         this.isVeggy = isVeggy;
     }
+
 
     public List<String> getAllergens() {
         return allergens;

@@ -2,6 +2,9 @@ package backend.ressources;
 
 import java.util.List;
 
+/**
+ * Interface that describes what methods have to be implemented for a Person-class
+ */
 public interface PersonIF {
     void sayHello();
     String getName();

@@ -77,6 +77,15 @@ public class Lunch {
 
     //no available restaurant exception ?
     public Restaurant randomRestaurant(){
+        if(availableRestaurants.isEmpty()){
+            System.out.println("is empty, no good");
+            try {
+                throw new NoAvailableRestaurantException("no restaurant available");
+            } catch (NoAvailableRestaurantException e) {
+                return new Restaurant("No restaurant available","please try another combination of attendees or day/time");
+            }
+        }
+
         System.out.println("Faith loading.. ");
         Random rndm = new Random();
         try {

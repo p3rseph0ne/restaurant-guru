@@ -50,7 +50,6 @@ public class RestaurantReader {
                 throw new IncorrectFileNameException("Incorrect filename : " + fileName );
         }
         //logging amount of restaurants
-        System.out.println("Number of restaurants after update: " + restaurants.size());
     }
     public void printData() {
 
