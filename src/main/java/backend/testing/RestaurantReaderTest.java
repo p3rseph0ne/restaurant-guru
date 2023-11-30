@@ -16,12 +16,19 @@ public class RestaurantReaderTest {
     RestaurantReader restaurantReader;
     Restaurant firstRestaurant;
 
+    /**
+     *  Prepare the variables for the further use
+     */
     @BeforeAll
     public void initalisation(){
         RestaurantReader restaurantReader = new RestaurantReader();
         Restaurant firstRestaurant = restaurantReader.getRestaurants().get(0);
     }
 
+    /**
+     *  Check if the expected Amount of Restaurants is the same as the real Amount of Restaurants
+     *  If an error occurs, print the stack trace
+     */
     @Test
     public void testRestaurantReaderSize() {
         try {
@@ -34,6 +41,10 @@ public class RestaurantReaderTest {
         }
     }
 
+    /**
+     *  Check if the expected Address is the same as the real Address
+     *  If an error occurs, print the stack trace
+     */
     @Test
     public void testRestaurantReaderAddress() {
         try {
@@ -43,7 +54,10 @@ public class RestaurantReaderTest {
             e.printStackTrace();
         }
     }
-
+    /**
+     *  Check if the expected Restaurant Name is the same as the real Restaurant Name
+     *  If an error occurs, print the stack trace
+     */
     @Test
     public void testRestaurantReaderName() {
         try {
@@ -54,6 +68,10 @@ public class RestaurantReaderTest {
         }
     }
 
+    /**
+     *  Check if the expected PriceRange is the same as the real PriceRange
+     *  If an error occurs, print the stack trace
+     */
     @Test
     public void testRestaurantReaderPrizeRange() {
         try {
@@ -64,6 +82,10 @@ public class RestaurantReaderTest {
         }
     }
 
+    /**
+     *  Check if the expected OpeningDays is the same as the real OpeningDays
+     *  If an error occurs, print the stack trace
+     */
     @Test
     public void testRestaurantReaderOpeningDays() {
         try {

@@ -25,8 +25,11 @@ public class SparkRESTAPI {
      public static void main(String[] args) {
 
          try {
-             String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format( new Date());
+             // Create a new timestamp so the logging files can be sorted by date
+             String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+             // Create a new fileHandler so the infos stay persistent in a file
              FileHandler fileHandler = new FileHandler("src/main/java/backend/logging/logger" + timeStamp + ".log",2000, 1);
+             // Create a formatter so the file is actually readable
              Formatter formatter = new Formatter() {
                  @Override
                  public String format(LogRecord record) {
@@ -37,6 +40,7 @@ public class SparkRESTAPI {
              };
              fileHandler.setFormatter(formatter);
              logger.addHandler(fileHandler);
+             // Log the first line to proof it works
              logger.log(Level.INFO, "Das sollte die erste Zeile im Log sein");
          } catch (IOException e) {
              logger.log(Level.SEVERE,e.toString());
@@ -69,8 +73,8 @@ public class SparkRESTAPI {
                     .collect(joining(", "));
             String allergies = e.getAllergies().stream().map(Object::toString)
                     .collect(joining(", "));
-            //calls userhandling to add person to database
             logger.log(Level.INFO, "Ein neuer Employee wurde hinzugefügt");
+            //calls userhandling to add person to database
             return gson.toJson(userhandler.createNewUser(e.getName(),allergies,preferences,e.isVegan(),e.isVeggy(),false,false));
         });
          /**
@@ -86,8 +90,8 @@ public class SparkRESTAPI {
                      .collect(joining(", "));
              String allergies = c.getAllergies().stream().map(Object::toString)
                      .collect(joining(", "));
-             //calls userhandling to add person to database
             logger.log(Level.INFO, "Ein neuer Kunde wurde hinzugefügt");
+             //calls userhandling to add person to database
              return gson.toJson(userhandler.createNewUser(c.getName(),allergies,preferences,c.isVegan(),c.isVeggy(),true,c.isPaying()));
          });
 
@@ -105,8 +109,8 @@ public class SparkRESTAPI {
           * returns a list containing every person in the db to frontend when /restaurant is called
           */
          get("/restaurant",(req,res)->{
-             //calls userhandling to get available person-list
              logger.log(Level.INFO, "Die Personen wurden abgefragt und zurückgegeben");
+             //calls userhandling to get available person-list
              return gson.toJson(userhandler.getPersonList());
          });
 
