@@ -1,10 +1,13 @@
 package backend.businesslogic;
 
+import backend.logging.Logging;
 import backend.ressources.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Lunch represents one Lunch-outing and therefor contains all attendees and available restaurants
@@ -20,6 +23,8 @@ public class Lunch {
     private String time;
     private List<Restaurant> allRestaurants;
     private List<Restaurant> availableRestaurants;
+
+    static Logger logger = Logger.getLogger(Logging.class.getName());
 
     /**
      * Creates a new Lunch with the given arguments & calls the methods necessary for set-up
@@ -58,6 +63,8 @@ public class Lunch {
             for(String s:p.getPreferences()){
                 if(!preferences.contains(s)) preferences.add(s);
             }
+
+            logger.log(Level.INFO, "Allergien und Präferenzen der Person wurden angelegt: ", p.toString());
         }
 
     }
@@ -70,6 +77,7 @@ public class Lunch {
         allRestaurants = new ArrayList<Restaurant>();
         RestaurantReader restaurantReader = new RestaurantReader();
         allRestaurants = restaurantReader.getRestaurants();
+        logger.log(Level.INFO, "Es wurde eine Übersicht über alle Restaurants zurückgegeben");
     }
 
     /**
@@ -90,6 +98,7 @@ public class Lunch {
                         if (!currDish.getAllergens().containsAll(this.allergies)) {
                             availableRestaurants.add(currRest);
                             System.out.println("found a restaurant"+currRest.getName());
+                            logger.log(Level.INFO, "Dieses Restaurant ist verfügbar: ", currRest.getName());
                         }
                     }
             }
@@ -106,6 +115,7 @@ public class Lunch {
     public Restaurant randomRestaurant(){
         if(availableRestaurants.isEmpty()){
             System.out.println("is empty, no good");
+            logger.log(Level.WARNING, "Es wurde kein verfügbares Restaurant gefunden, die Liste muss erweitert werden");
             try {
                 throw new NoAvailableRestaurantException("no restaurant available");
             } catch (NoAvailableRestaurantException e) {

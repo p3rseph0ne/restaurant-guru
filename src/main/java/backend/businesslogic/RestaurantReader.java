@@ -1,5 +1,7 @@
 package backend.businesslogic;
 
+
+import backend.logging.Logging;
 import backend.ressources.Restaurant;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -8,6 +10,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * RestaurantReader reads the restaurant data from a given json-file, this is considered a POC to showcase different
@@ -19,6 +23,8 @@ public class RestaurantReader {
     private List<Restaurant> restaurants;
     //filename and path for further usage
     private final String fileName = "src/main/java/backend/ressources/RestaurantList.json";
+
+    static Logger logger = Logger.getLogger(Logging.class.getName());
 
 
     /**
@@ -43,7 +49,9 @@ public class RestaurantReader {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             Restaurant[] restaurantArray = gson.fromJson(reader, Restaurant[].class);
             restaurants = Arrays.asList(restaurantArray);
+            logger.log(Level.INFO, "Restaurants einlesen erfolgreich");
             } catch (FileNotFoundException e) {
+                logger.log(Level.SEVERE, e.toString());
             try {
                 throw new IncorrectFileNameException("Incorrect filename : " + fileName );
             } catch (IncorrectFileNameException ex) {

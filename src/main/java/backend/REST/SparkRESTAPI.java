@@ -2,10 +2,16 @@ package backend.REST;
 
 import backend.businesslogic.Lunch;
 import backend.businesslogic.database.UserHandling;
+import backend.logging.Logging;
 import backend.ressources.Customer;
 import backend.ressources.Employee;
 import backend.ressources.Restaurant;
 import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.*;
 
 import static java.util.stream.Collectors.joining;
 import static spark.Spark.*;
@@ -14,7 +20,30 @@ import static spark.Spark.*;
  * Custom REST API for handling requests between front and backend
  */
 public class SparkRESTAPI {
+
+    static Logger logger = Logger.getLogger(Logging.class.getName());
      public static void main(String[] args) {
+
+         try {
+             String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format( new Date());
+             FileHandler fileHandler = new FileHandler("src/main/java/backend/logging/logger" + timeStamp + ".log",2000, 1);
+             Formatter formatter = new Formatter() {
+                 @Override
+                 public String format(LogRecord record) {
+                     return record.getThreadID()+" : "+record.getSourceClassName()+" : "
+                             +new Date(record.getMillis())+" : "
+                             +record.getMessage()+"\n";
+                 }
+             };
+             fileHandler.setFormatter(formatter);
+             logger.addHandler(fileHandler);
+             logger.log(Level.INFO, "Das sollte die erste Zeile im Log sein");
+         } catch (IOException e) {
+             logger.log(Level.SEVERE,e.toString());
+             throw new RuntimeException(e);
+         }
+
+         logger.log(Level.INFO, "API gestartet");
 
          /**
           * Enable CORs (cross-origin requests) for our REST API
@@ -41,6 +70,7 @@ public class SparkRESTAPI {
             String allergies = e.getAllergies().stream().map(Object::toString)
                     .collect(joining(", "));
             //calls userhandling to add person to database
+            logger.log(Level.INFO, "Ein neuer Employee wurde hinzugefügt");
             return gson.toJson(userhandler.createNewUser(e.getName(),allergies,preferences,e.isVegan(),e.isVeggy(),false,false));
         });
          /**
@@ -57,6 +87,7 @@ public class SparkRESTAPI {
              String allergies = c.getAllergies().stream().map(Object::toString)
                      .collect(joining(", "));
              //calls userhandling to add person to database
+            logger.log(Level.INFO, "Ein neuer Kunde wurde hinzugefügt");
              return gson.toJson(userhandler.createNewUser(c.getName(),allergies,preferences,c.isVegan(),c.isVeggy(),true,c.isPaying()));
          });
 
@@ -75,6 +106,7 @@ public class SparkRESTAPI {
           */
          get("/restaurant",(req,res)->{
              //calls userhandling to get available person-list
+             logger.log(Level.INFO, "Die Personen wurden abgefragt und zurückgegeben");
              return gson.toJson(userhandler.getPersonList());
          });
 
@@ -93,6 +125,7 @@ public class SparkRESTAPI {
                 lunch.readAllergiesAndPreferences();
                 lunch.defineAvailableRestaurants();
                 Restaurant restaurant = lunch.randomRestaurant();
+                logger.log(Level.INFO, "Die Restaurants wurden abgefragt und zurückgegeben");
                 return gson.toJson(restaurant);
             }catch(Exception e){
                 System.err.println(e.toString());
