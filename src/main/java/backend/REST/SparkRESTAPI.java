@@ -2,10 +2,16 @@ package backend.REST;
 
 import backend.businesslogic.Lunch;
 import backend.businesslogic.database.UserHandling;
+import backend.logging.Logging;
 import backend.ressources.Customer;
 import backend.ressources.Employee;
 import backend.ressources.Restaurant;
 import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.*;
 
 import static java.util.stream.Collectors.joining;
 import static spark.Spark.*;
@@ -14,7 +20,34 @@ import static spark.Spark.*;
  * Custom REST API for handling requests between front and backend
  */
 public class SparkRESTAPI {
+
+    static Logger logger = Logger.getLogger(Logging.class.getName());
      public static void main(String[] args) {
+
+         try {
+             // Create a new timestamp so the logging files can be sorted by date
+             String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+             // Create a new fileHandler so the infos stay persistent in a file
+             FileHandler fileHandler = new FileHandler("src/main/java/backend/logging/logger" + timeStamp + ".log",2000, 1);
+             // Create a formatter so the file is actually readable
+             Formatter formatter = new Formatter() {
+                 @Override
+                 public String format(LogRecord record) {
+                     return record.getThreadID()+" : "+record.getSourceClassName()+" : "
+                             +new Date(record.getMillis())+" : "
+                             +record.getMessage()+"\n";
+                 }
+             };
+             fileHandler.setFormatter(formatter);
+             logger.addHandler(fileHandler);
+             // Log the first line to proof it works
+             logger.log(Level.INFO, "Das sollte die erste Zeile im Log sein");
+         } catch (IOException e) {
+             logger.log(Level.SEVERE,e.toString());
+             throw new RuntimeException(e);
+         }
+
+         logger.log(Level.INFO, "API gestartet");
 
          /**
           * Enable CORs (cross-origin requests) for our REST API
@@ -40,6 +73,7 @@ public class SparkRESTAPI {
                     .collect(joining(", "));
             String allergies = e.getAllergies().stream().map(Object::toString)
                     .collect(joining(", "));
+            logger.log(Level.INFO, "Ein neuer Employee wurde hinzugefügt");
             //calls userhandling to add person to database
             return gson.toJson(userhandler.createNewUser(e.getName(),allergies,preferences,e.isVegan(),e.isVeggy(),false,false));
         });
@@ -56,6 +90,7 @@ public class SparkRESTAPI {
                      .collect(joining(", "));
              String allergies = c.getAllergies().stream().map(Object::toString)
                      .collect(joining(", "));
+            logger.log(Level.INFO, "Ein neuer Kunde wurde hinzugefügt");
              //calls userhandling to add person to database
              return gson.toJson(userhandler.createNewUser(c.getName(),allergies,preferences,c.isVegan(),c.isVeggy(),true,c.isPaying()));
          });
@@ -74,6 +109,7 @@ public class SparkRESTAPI {
           * returns a list containing every person in the db to frontend when /restaurant is called
           */
          get("/restaurant",(req,res)->{
+             logger.log(Level.INFO, "Die Personen wurden abgefragt und zurückgegeben");
              //calls userhandling to get available person-list
              return gson.toJson(userhandler.getPersonList());
          });
@@ -93,6 +129,7 @@ public class SparkRESTAPI {
                 lunch.readAllergiesAndPreferences();
                 lunch.defineAvailableRestaurants();
                 Restaurant restaurant = lunch.randomRestaurant();
+                logger.log(Level.INFO, "Die Restaurants wurden abgefragt und zurückgegeben");
                 return gson.toJson(restaurant);
             }catch(Exception e){
                 System.err.println(e.toString());
