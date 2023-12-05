@@ -5,7 +5,6 @@ import backend.ressources.Restaurant;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class RestaurantReaderTest {
      *  Prepare the variables for the further use
      */
     @BeforeAll
-    public void initalisation(){
+    public static void initalisation(){
         RestaurantReader restaurantReader = new RestaurantReader();
         Restaurant firstRestaurant = restaurantReader.getRestaurants().get(0);
     }

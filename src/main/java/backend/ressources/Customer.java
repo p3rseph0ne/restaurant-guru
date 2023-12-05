@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Customer class extends class Person and holds all needed attributes for a Customer in the System
  */
-public class Customer extends Person {
+public final class Customer extends Person {
 
     /**
      * isPaying is an exclusive attribute to Customer, neither Person nor Employee have this. It indicates whether or not a given Customer

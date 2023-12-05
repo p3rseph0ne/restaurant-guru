@@ -19,7 +19,7 @@ public class Lunch {
     private List<Person> checkedPerson;
     private List<String> preferences;
     private List<String> allergies;
-    private String day;
+    private Weekday day;
     private String time;
     private List<Restaurant> allRestaurants;
     private List<Restaurant> availableRestaurants;
@@ -32,7 +32,7 @@ public class Lunch {
      * @param day
      * @param time
      */
-    public Lunch(List<Person> checkedPerson, String day, String time){
+    public Lunch(List<Person> checkedPerson, Weekday day, String time){
         this.checkedPerson = checkedPerson;
         this.day = day;
         this.time = time;
@@ -91,14 +91,14 @@ public class Lunch {
         availableRestaurants = new ArrayList<Restaurant>();
         for (Restaurant currRest : allRestaurants) {
             //check opening days
-            if (currRest.isOpen(day)) {
+            if (currRest.isOpen(String.valueOf(day))) {
                 //check allergies
                     for (int j = 0; j < currRest.getMenu().getDishes().size(); j++) {
                         Dish currDish = currRest.getMenu().getDishes().get(j);
                         if (!currDish.getAllergens().containsAll(this.allergies)) {
                             availableRestaurants.add(currRest);
                             System.out.println("found a restaurant"+currRest.getName());
-                            logger.log(Level.INFO, "Dieses Restaurant ist verfügbar: ", currRest.getName());
+                            logger.log(Level.INFO, "Dieses Restaurant ist verfügbar: "+currRest.getName());
                         }
                     }
             }
@@ -124,7 +124,7 @@ public class Lunch {
         }
         Random rndm = new Random();
         try {
-            int rndmNumber = rndm.nextInt(0, availableRestaurants.size());
+            int rndmNumber = rndm.nextInt(availableRestaurants.size());
             System.out.println("random restaurant: "+availableRestaurants.get(rndmNumber).getName());
             return availableRestaurants.get(rndmNumber);
         } catch (Exception e) {
