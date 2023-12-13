@@ -51,10 +51,11 @@ public class RestaurantReader {
             restaurants = Arrays.asList(restaurantArray);
             logger.log(Level.INFO, "Restaurants einlesen erfolgreich");
             } catch (FileNotFoundException e) {
-                logger.log(Level.SEVERE, e.toString());
+                logger.log(Level.SEVERE, e.getMessage());
             try {
                 throw new IncorrectFileNameException("Incorrect filename : " + fileName );
             } catch (IncorrectFileNameException ex) {
+                logger.log(Level.SEVERE, ex.getMessage());
                 ex.printStackTrace();
             }
         }

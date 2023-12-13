@@ -132,6 +132,7 @@ public class SparkRESTAPI {
                 logger.log(Level.INFO, "Die Restaurants wurden abgefragt und zurückgegeben");
                 return gson.toJson(restaurant);
             }catch(Exception e){
+                logger.log(Level.SEVERE, e.getMessage());
                 System.err.println(e.toString());
             }
 
