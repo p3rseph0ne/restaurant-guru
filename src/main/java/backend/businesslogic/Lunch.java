@@ -64,7 +64,7 @@ public class Lunch {
                 if(!preferences.contains(s)) preferences.add(s);
             }
 
-            logger.log(Level.INFO, "Allergien und Präferenzen der Person wurden angelegt: ", p.toString());
+            logger.log(Level.INFO, "Allergien und Präferenzen der Person wurden angelegt: " + p.toString());
         }
 
     }
@@ -98,7 +98,7 @@ public class Lunch {
                         if (!currDish.getAllergens().containsAll(this.allergies)) {
                             availableRestaurants.add(currRest);
                             System.out.println("found a restaurant"+currRest.getName());
-                            logger.log(Level.INFO, "Dieses Restaurant ist verfügbar: "+currRest.getName());
+                            logger.log(Level.INFO, "Dieses Restaurant ist verfügbar: " + currRest.getName());
                         }
                     }
             }
@@ -119,6 +119,7 @@ public class Lunch {
             try {
                 throw new NoAvailableRestaurantException("no restaurant available");
             } catch (NoAvailableRestaurantException e) {
+                logger.log(Level.SEVERE, e.getMessage());
                 return new Restaurant("No restaurant available","please try another combination of attendees or day/time");
             }
         }
@@ -128,6 +129,7 @@ public class Lunch {
             System.out.println("random restaurant: "+availableRestaurants.get(rndmNumber).getName());
             return availableRestaurants.get(rndmNumber);
         } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage());
             System.err.println(e.toString());
         }
         return null;

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.logging.*;
 
+//Test-Logging Klasse, um Formatierungen, FileHandler und Co auszuprobieren. Nicht relevant fürs Projekt
 public class Logging {
     static Logger logger = Logger.getLogger(Logging.class.getName());
 
@@ -11,7 +12,7 @@ public class Logging {
         logger.setLevel(Level.ALL);
        // logger.addHandler(new ConsoleHandler());
         try {
-            FileHandler fileHandler = new FileHandler("src/main/java/backend/logging/logger.log",2000, 5);
+            FileHandler fileHandler = new FileHandler("src/main/java/backend/logging/logger.log",2000, 1);
             Formatter formatter = new Formatter() {
                 @Override
                 public String format(LogRecord record) {
